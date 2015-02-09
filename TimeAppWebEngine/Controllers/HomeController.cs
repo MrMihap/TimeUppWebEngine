@@ -6,15 +6,23 @@ using System.Web.Mvc;
 
 namespace TimeAppWebEngine.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
+  {
+    //
+    // GET: /Home/
+
+    public ActionResult Index()
     {
-        //
-        // GET: /Home/
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+      return View();
     }
+    public ActionResult Portfolio()
+    {
+      return View();
+    }
+    public ActionResult About()
+    {
+      return View();
+    }
+
+  }
 }

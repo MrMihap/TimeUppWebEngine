@@ -9,7 +9,26 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @RenderBody()
+    <div id="MainContainer">
+    <div id="headerContainer">
+        <div id="LogoContainer">
+        </div>
+        <div id="MenuContainer">
+            <ul>
+                <li class="MenuElement"><a href="/home/">ABOUT US</a></li>
+                <li class="MenuElement"><a href="/home/portfolio">PORTFOLIO</a></li>
+                <li class="MenuElement"><a href="/home/about">OUR TEAM</a></li>
+                <li class="MenuElement"><a href="https://docs.google.com/forms/d/1TMnOWHc8mdMLgQ3HM2-5dngze0KAZZdIH19NnYayZAE/viewform">FEEDBACK</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="BodyContainer">
+        @RenderBody()
+    </div>
+    <div id="FooterContainer">
+    </div>
+</div>
+    
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)

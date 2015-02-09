@@ -1,54 +1,97 @@
 ﻿body {
     font-family: 'Adobe Caslon Pro';
 }
+
 #MainContainer {
     width: 980px;
     padding-left: 45px;
     padding-right: 45px;
 }
+
 #headerContainer {
-   height: 130px;
-   width: 100%;
+    height: 130px;
+    width: 100%;
 }
+
 #LogoContainer {
     width: 270px;
     height: 100%;
-    float:left;
-    background-color:brown;
+    float: left;
+    background-image: url("/Content/img/title.jpg");
 }
+
 #MenuContainer {
-    width:150px;
+    width: 150px;
     height: 100%;
     float: right;
     padding-left: 10px;
-    background-color: aquamarine;
+    /*background-color: aquamarine;*/
 }
+a {
+    text-decoration:none;
+    color:inherit;
+}
+ul {
+    margin-top:0px;
+
+}
+li { /* обычная ссылка */
+    background-color: white;
+    color: black;
+}
+
+    li.MenuElement { /* анимация */
+        -webkit-transition-duration: 0.4s;
+        -o-transition-duration: 0.8s;
+        -moz-transition-duration: 0.8s;
+        transition-duration: 0.4s;
+    }
+
+        li.MenuElement:hover { /* цвет при наведении */
+            background-color: rgb(191,39,0);
+            color: black;
+        }
+
 .MenuElement {
-    width: 150px;
+    /*width: 150px;*/
     height: 25px;
     padding-top: 5px;
-    font-size:15pt;
-    text-align:right;
+    font-size: 15pt;
+    text-align: right;
+    list-style-type: none;
 }
+
 #BodyContainer {
     width: 100%;
-    height: 300px;
+    height: 700px;
     margin-top: 20px;
-    background-color: brown;
+    /*background-color: brown;*/
 }
+
 .DataPageContainer {
-    width:730px;
+    width: auto;
     height: 590px;
 }
-#GreenPage {
-}
-#YellowPage {
-}
-#BluePage {
+
+.Page {
+    border:10px;
+    border-radius:40px;
+    position:absolute;
 }
 .TextContainer {
-    width: 640px;
+    width: 740px;
     min-height: 400px;
+    height:523px;
+    border: 30px;
     border-radius: 30px;
-    background-color:white;
+    background-color: white;
+    padding: 20px;
+    margin: 10pt;
+    font-size: 14pt;
+}
+.imginTextContainer {
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+    float: left;
 }
