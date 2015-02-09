@@ -63,11 +63,17 @@ li { /* обычная ссылка */
 
 #BodyContainer {
     width: 100%;
-    height: 700px;
+    height:auto;
     margin-top: 20px;
     /*background-color: brown;*/
 }
+#FooterContainer {
+    margin-top: 35px;
+    height: 95px;
+    text-align:center;
+    font-size: 13px;
 
+}
 .DataPageContainer {
     width: auto;
     height: 590px;
@@ -81,12 +87,12 @@ li { /* обычная ссылка */
 .TextContainer {
     width: 740px;
     min-height: 400px;
-    height:523px;
+    height:530px;
     border: 30px;
     border-radius: 30px;
     background-color: white;
     padding: 20px;
-    margin: 10pt;
+    margin: 10px;
     font-size: 14pt;
 }
 .imginTextContainer {
