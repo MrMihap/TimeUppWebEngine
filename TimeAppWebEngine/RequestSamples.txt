@@ -1,0 +1,36 @@
+﻿//RegAlarm
+http://localhost:3003/webapi/registerAlarm/?json=
+{
+	"UserID" : "ivan@gmail.com", 
+	"Addres" : "Country, State, street, etc.", 
+	"DeviceIMEI" :  "12343241EFРГHUIHUIHUIffgdfgDFS@11WT", 
+	"Destination" : { "X" : "39.0000", "Y" : "40.57000"}, 
+	"Transtport Type" : "ololo", 
+	"Arrival Time" : "2009-02-15T00:00:00Z"
+}
+
+//SetAlarm Duration
+http://localhost:3003/webapi/SetAlarmDuration/?json=
+{
+	"UserID" : "ivan@gmail.com",
+	"DeviceIMEI" : "12343241EFРГHUIHUIHUIffgdfgDFS@11WT",
+ 	"AlarmID" : "9",
+	"Location" : { "X" : "38.0000", "Y" : "41.57000"},
+	"Addres" : "Country, State, street, etc.",
+	"RequestDateTime" : "2009-02-15T19:19:23Z",
+	"Duration" : "65"
+}
+//Get Alarm Time Line 
+http://localhost:3003/webapi/GetAlarmTimeLine?json=
+{
+	"AlarmID" : "28",
+}
+//Alarm Time line Response
+{
+	"ResultCode" : 0000000, /* boolean */ 
+	"ErrorCode": 0000000, /* int */
+	"K value" : 00.00000, /* double */
+	"B value": 00.00000, /* double*/
+	"Sigma value": 00.000000, /* double */
+
+}

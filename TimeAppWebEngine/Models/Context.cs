@@ -67,6 +67,9 @@ namespace TimeAppWebEngine.Models
     public int? EndPointId { get; set; }
     public WayPoint EndPoint { get; set; }
     public DateTime DestinationTime { get; set; }
+    public Task()
+    {
+    }
     public Task(RegAlarm alarm)
     {
       using (AppContext _db = new AppContext())
@@ -91,7 +94,7 @@ namespace TimeAppWebEngine.Models
         this.DestinationTime = alarm.ArrivalTime;
         this.EndPointId = point.Id;
         this.Name = "";
-       
+
       }
     }
   }
@@ -104,7 +107,45 @@ namespace TimeAppWebEngine.Models
     public WayPoint StartPoint { get; set; }
     public int? EndPointId { get; set; }
     public WayPoint EndPoint { get; set; }
+    public int? AlarmId { get; set; }
+    public Task Alarm { get; set; }
     public DateTime RequestDateTime { get; set; }
-    public DateTime TimeLength { get; set; }
+    public int WayDuration { get; set; }
+
+    public Stat()
+    {
+    }
+
+    public Stat(AlarmDuration duration)
+    {
+      //chek for userID, etc
+      using (AppContext _db = new AppContext())
+      {
+        if (_db.UserAccounts.Where(acc => acc.EMail.Equals(duration.UserID)).Count() != 1)
+        {
+          throw new ArgumentException("User not exist or have dublicate");
+        }
+        if (_db.Tasks.Where(task => task.Id == duration.AlarmID).Count() != 1)
+        {
+          throw new ArgumentException("Task not exist or have dublicate");
+        }
+        int UserID = _db.UserAccounts.Where(acc => acc.EMail.Equals(duration.UserID)).FirstOrDefault().Id;
+        Task currentTask = _db.Tasks.Where(task => task.Id == duration.AlarmID).FirstOrDefault();
+        if (UserID != currentTask.userId)
+        {
+          throw new ArgumentException("UserID Mismatch");
+        }
+        this.EndPointId = currentTask.EndPointId;
+        this.RequestDateTime = duration.Time;
+        this.WayDuration = duration.Duration;
+        this.AlarmId = duration.AlarmID;
+        WayPoint point = new WayPoint(duration.location);
+        _db.WayPoints.Add(point);
+        _db.SaveChanges();
+        this.StartPointId = point.Id;
+
+        
+      }
+    }
   }
 }

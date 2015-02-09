@@ -19,11 +19,7 @@ namespace TimeAppWebEngine.Controllers
     {
       using (AppContext _db = new AppContext())
       {
-        UserAccount acc = new UserAccount();
-        acc.EMail = "test@test";
-        _db.UserAccounts.Add(acc);
-        _db.SaveChanges();
-        int i = _db.UserAccounts.Count();
+
       }
       return View();
     }
@@ -32,11 +28,7 @@ namespace TimeAppWebEngine.Controllers
     {
       using (AppContext _db = new AppContext())
       {
-        UserAccount acc = new UserAccount();
-        acc.EMail = "test@test";
-        _db.UserAccounts.Add(acc);
-        _db.SaveChanges();
-        int i = _db.UserAccounts.Count();
+
       }
       return Json(new { Messsage = "Hello, it's Time Upp web api server" }, JsonRequestBehavior.AllowGet);
     }
@@ -49,9 +41,9 @@ namespace TimeAppWebEngine.Controllers
         JsonString = Request["json"];
 
         alarm = JsonConvert.DeserializeObject<RegAlarm>(JsonString, new IsoDateTimeConverter());
+        Task task = new Task(alarm);
         using (AppContext _db = new AppContext())
         {
-          Task task = new Task(alarm);
           _db.Tasks.Add(task);
           _db.SaveChanges();
           return Json(new { ResultCode = "1", ErrorCode = "0", AlarmID = task.Id.ToString() }, JsonRequestBehavior.AllowGet);
@@ -75,10 +67,43 @@ namespace TimeAppWebEngine.Controllers
     {
       //parsing
       JsonString = Request["json"];
-      RegAlarm alarm = JsonConvert.DeserializeObject<RegAlarm>(JsonString);
-
-      return Json(new { ResultCode = "0", ErrorCode = "1" }, JsonRequestBehavior.AllowGet);
+      AlarmDuration alarmDuration = JsonConvert.DeserializeObject<AlarmDuration>(JsonString);
+      //Проверяем корректность по пользователю
+      try
+      {
+        Stat durationStat = new Stat(alarmDuration);
+        using (AppContext _db = new AppContext())
+        {
+          _db.Stats.Add(durationStat);
+          _db.SaveChanges();
+        }
+      }
+      catch (System.Data.Entity.Infrastructure.DbUpdateException e)
+      {
+        return Json(new { ResultCode = "0", ErrorCode = "1", ErrorProp = e.Message.ToString() }, JsonRequestBehavior.AllowGet);
+      }
+      catch (Exception e)
+      {
+        return Json(new { ResultCode = "0", ErrorCode = "1", ErrorProp = e.Message.ToString() }, JsonRequestBehavior.AllowGet);
+      }
+      return Json(new { ResultCode = "1", ErrorCode = "0" }, JsonRequestBehavior.AllowGet);
     }
+    public String GetAlarmTimeLine(string JsonString)
+    {
+      JsonString = Request["json"];
+      AlarmID alarmID = JsonConvert.DeserializeObject<AlarmID>(JsonString);
+      try
+      {
+        AlarmTimeLine timeLine = new AlarmTimeLine(alarmID);
 
+        timeLine.Calc();
+        AlarmTimeLineResponce responce = new AlarmTimeLineResponce(timeLine);
+        return JsonConvert.SerializeObject(responce);
+      }
+      catch (Exception e)
+      {
+        return Json(new { ResultCode = "0", ErrorCode = "1", ErrorProp = e.Message.ToString() }, JsonRequestBehavior.AllowGet).ToString();
+      }
+    }
   }
 }
