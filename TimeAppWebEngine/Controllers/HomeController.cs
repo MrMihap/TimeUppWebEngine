@@ -11,18 +11,21 @@ namespace TimeAppWebEngine.Controllers
     //
     // GET: /Home/
 
-    public ActionResult Index()
+    public ActionResult Index() //about us
     {
       return View();
     }
-    public ActionResult Portfolio()
+    public ActionResult Portfolio() 
     {
       return View();
     }
-    public ActionResult About()
+    public ActionResult Team()
     {
       return View();
     }
-
+    public ActionResult Test()
+    {
+      return View();
+    }
   }
 }

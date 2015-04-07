@@ -1,0 +1,22 @@
+﻿@{
+  ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+<script type="text/javascript">
+  $(".sizeblediv").css("width").attrChanged(
+    function (e) {
+      alert("changed");
+    });
+  $(".sizeblediv").attrChanged({
+    callback: function (e) {
+      if ($(".sizeblediv").width > 200) {
+        $(".sizeblediv").width = 400;
+      }
+    }
+  }).resizable();
+</script>
+<div class="sizeblediv">
+  sometext
+
+</div>

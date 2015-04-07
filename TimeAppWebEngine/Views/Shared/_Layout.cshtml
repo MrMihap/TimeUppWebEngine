@@ -1,36 +1,37 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/css/MainStyle.css")
-    @Scripts.Render("~/bundles/modernizr")
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title</title>
+  @Styles.Render("~/Content/css")
+  @Styles.Render("~/Content/css/MainStyle.css")
+  @Scripts.Render("~/bundles/modernizr")
+  @Scripts.Render("~/Scripts/jquery-2.1.3.js")
 </head>
 <body>
-    <div id="MainContainer">
+  <div id="MainContainer">
     <div id="headerContainer">
-        <div id="LogoContainer">
-        </div>
-        <div id="MenuContainer">
-            <ul>
-                <li class="MenuElement"><a href="/home/">ABOUT US</a></li>
-                <li class="MenuElement"><a href="/home/portfolio">PORTFOLIO</a></li>
-                <li class="MenuElement"><a href="/home/about">OUR TEAM</a></li>
-                <li class="MenuElement"><a href="https://docs.google.com/forms/d/1TMnOWHc8mdMLgQ3HM2-5dngze0KAZZdIH19NnYayZAE/viewform">FEEDBACK</a></li>
-            </ul>
-        </div>
+      <div id="LogoContainer">
+      </div>
+      <div id="MenuContainer">
+        <ul>
+          <li class="MenuElement"><a href="/home/">ABOUT US</a></li>
+          <li class="MenuElement"><a href="/home/portfolio">PORTFOLIO</a></li>
+          <li class="MenuElement"><a href="/home/Team">OUR TEAM</a></li>
+          <li class="MenuElement"><a href="https://docs.google.com/forms/d/1TMnOWHc8mdMLgQ3HM2-5dngze0KAZZdIH19NnYayZAE/viewform">FEEDBACK</a></li>
+        </ul>
+      </div>
     </div>
     <div id="BodyContainer">
-        @RenderBody()
+      @RenderBody()
     </div>
     <div id="FooterContainer">
-        © 2014 All Rights reserved. Creati.ws
+      © 2014 All Rights reserved. Creati.ws
     </div>
-</div>
+  </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+  @Scripts.Render("~/bundles/jquery")
+  @RenderSection("scripts", required: false)
 </body>
 </html>

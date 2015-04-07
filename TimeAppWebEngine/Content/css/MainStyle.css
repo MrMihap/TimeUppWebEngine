@@ -1,11 +1,33 @@
-﻿body {
-    font-family: 'Adobe Caslon Pro';
+﻿@font-face {
+font-family: "MainFontBlack"; 
+src: url("/Content/fonts/PFDinDisplayPro-Black.ttf");
 }
+@font-face {
 
+font-family: "MainFontReg"; 
+src: url("/Content/fonts/PFDinDisplayPro-Reg.ttf");
+}
+body {
+    
+    background-image:url("/Content/img/background.jpg")
+}
+p {
+    font-family: 'Arial';
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 14px;
+}
+h3 {
+    font-family: "MainFontReg"; 
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 30px;
+}
 #MainContainer {
     width: 980px;
     padding-left: 45px;
     padding-right: 45px;
+    margin: 0 auto;
 }
 
 #headerContainer {
@@ -21,10 +43,10 @@
 }
 
 #MenuContainer {
-    width: 150px;
+    width: 190px;
     height: 100%;
     float: right;
-    padding-left: 10px;
+    /*padding-left: 10px;*/
     /*background-color: aquamarine;*/
 }
 a {
@@ -36,8 +58,12 @@ ul {
 
 }
 li { /* обычная ссылка */
-    background-color: white;
-    color: black;
+    /*background-color: white;*/
+    color: white;
+    padding-right: 10px;
+    font-family: "MainFontReg";    
+    font-weight:100;
+    
 }
 
     li.MenuElement { /* анимация */
@@ -45,6 +71,7 @@ li { /* обычная ссылка */
         -o-transition-duration: 0.8s;
         -moz-transition-duration: 0.8s;
         transition-duration: 0.4s;
+
     }
 
         li.MenuElement:hover { /* цвет при наведении */
@@ -53,10 +80,11 @@ li { /* обычная ссылка */
         }
 
 .MenuElement {
-    /*width: 150px;*/
+    width: 150px;
     height: 25px;
     padding-top: 5px;
     font-size: 15pt;
+    min-width: 115px;
     text-align: right;
     list-style-type: none;
 }
@@ -77,6 +105,7 @@ li { /* обычная ссылка */
 .DataPageContainer {
     width: auto;
     height: 590px;
+    position: relative;
 }
 
 .Page {
@@ -96,8 +125,20 @@ li { /* обычная ссылка */
     font-size: 14pt;
 }
 .imginTextContainer {
-    width: 200px;
+    /*width: 200px;*/
     height: 200px;
     margin: 30px;
     float: left;
+}
+.sizeblediv {
+     resize: both;  
+    overflow: auto;
+      border: 1px solid #216278;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #06799f;
+    width: 300px;
+    height: 150px;
+    min-width: 300px;
+    min-height: 150px;
 }
